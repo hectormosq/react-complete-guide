@@ -6,9 +6,7 @@ module.exports = {
   extends: [
     "airbnb",
     "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
-  ],
+    "plugin:react/recommended", "plugin:prettier/recommended"],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -22,8 +20,12 @@ module.exports = {
   },
   plugins: [
     'react',
+    'react-hooks'
   ],
   rules: {
-    "max-classes-per-file": ["error", 1]
-  },
+    "linebreak-style": ["error", "unix"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    'react/jsx-one-expression-per-line': 'off'
+  }
 };

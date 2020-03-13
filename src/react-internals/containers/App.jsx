@@ -3,20 +3,21 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
 import style from './App.module.css';
-import Person from './Person/Person';
+import Cockpit from '../components/Cockpit/Cockpit';
+import Persons from '../components/Persons/Persons';
 
-const App = (props) => {
+const App = props => {
+  console.log(props);
   const [personsState, setPersonsState] = useState([
     { id: '1', name: 'Hector', age: '29' },
     { id: '2', name: 'Manu', age: '27' },
-    { id: '3', name: 'Amy', age: '26' },
+    { id: '3', name: 'Amy', age: '26' }
   ]);
-  const [otherState] = useState('Otro Estado');
   const [showPersons, setShowPersons] = useState(false);
 
   const nameChangedHandler = (event, id) => {
     const persons = [...personsState];
-    const personIndex = persons.findIndex((item) => item.id === id);
+    const personIndex = persons.findIndex(item => item.id === id);
 
     if (personIndex > -1) {
       persons[personIndex].name = event.target.value;
@@ -24,7 +25,7 @@ const App = (props) => {
     }
   };
 
-  const deletePersonHandler = (personIndex) => {
+  const deletePersonHandler = personIndex => {
     const persons = [...personsState];
     persons.splice(personIndex, 1);
     setPersonsState(persons);
@@ -35,49 +36,23 @@ const App = (props) => {
   };
 
   let persons = null;
-  let btnClass = '';
   if (showPersons) {
     persons = (
-      <div>
-        {personsState.map((person, index) => (
-          <Person
-            key={person.id}
-            name={person.name}
-            age={person.age}
-            click={() => deletePersonHandler(index)}
-            changed={(event) => nameChangedHandler(event, person.id)}
-          />
-        ))}
-      </div>
+      <Persons
+        personList={personsState}
+        clicked={deletePersonHandler}
+        changed={nameChangedHandler}
+      />
     );
-  }
-
-  const classes = [];
-  if (personsState.length <= 2) {
-    classes.push(style.Red);
-  }
-  if (personsState.length <= 1) {
-    classes.push(style.Bold);
-  }
-  if (showPersons) {
-    btnClass = style.Red;
   }
 
   return (
     <div className={style.App}>
-      <h1>Hi, I'm a React App</h1>
-      <p className={classes.join(' ')}>
-        This is really working with OtherState:
-        {' '}
-        {otherState}
-      </p>
-      <button
-        type="button"
-        className={btnClass}
-        onClick={togglePersonsHandler.bind(this)}
-      >
-        Toggle Persons
-      </button>
+      <Cockpit
+        showPersons={showPersons}
+        personList={personsState}
+        buttonHandler={togglePersonsHandler}
+      />
       {persons}
     </div>
   );
