@@ -1,18 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Person from './Person/Person';
 
-const persons = props => {
+const Persons = props => {
   const { personList, clicked, changed } = props;
 
-  return personList.map((person, index) => (
-    <Person
-      key={person.id}
-      name={person.name}
-      age={person.age}
-      click={() => clicked(index)}
-      changed={event => changed(event, person.id)}
-    />
-  ));
+  useEffect(() => {
+    console.group('[Persons] useEffect general');
+    console.groupEnd();
+    return () => {
+      // Clean up
+      console.log('Destroying persons');
+    };
+  }, []);
+
+  useEffect(() => {
+    console.group('[Persons] useEffect for person');
+    console.log('Le Person', personList);
+    console.groupEnd();
+  }, [props.personList, personList]);
+
+  return personList.map((person, index) => {
+    console.log('[Person] - Rendering');
+    return (
+      <Person
+        key={person.id}
+        name={person.name}
+        age={person.age}
+        click={() => clicked(index)}
+        changed={event => changed(event, person.id)}
+      />
+    );
+  });
 };
 
-export default persons;
+export default Persons;
