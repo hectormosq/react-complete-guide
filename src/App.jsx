@@ -15,36 +15,65 @@ const App = props => {
     otherState: "Other State"
   });
 
-  const [otherState] = useState('Otro Estado');
+  const [otherState] = useState("Otro Estado");
 
-  const switchNameHandler = () => {
+  const switchNameHandler = newName => {
     setPersonsState({
       persons: [
-        { name: "Hector Joel", age: "29" },
+        { name: newName, age: "29" },
         { name: "Manu", age: "27" },
         { name: "Amy", age: "26" }
       ]
     });
   };
 
+  const nameChangedHandler = event => {
+    setPersonsState({
+      persons: [
+        { name: "Hector Joel", age: "29" },
+        { name: event.target.value, age: "27" },
+        { name: "Amy", age: "26" }
+      ]
+    });
+  };
+
+  const style = {
+    backgroundColor: "white",
+    font: "inherit",
+    border: "1px solid blue",
+    padding: "8px",
+    cursor: 'pointer'
+  };
+
   return (
     <div className="App">
       <h1>Hi, I'm a React App</h1>
       <p>This is really working with OtherState: {otherState}</p>
-      <button onClick={switchNameHandler}>Switch Name</button>
+      <button
+        style={style}
+        onClick={() => switchNameHandler("Con Arrow Function")}
+      >
+        Switch Name
+      </button>
       <Person
         name={personsState.persons[0].name}
         age={personsState.persons[0].age}
+        // TODO [Comprobar] - Es preferible usar .bind en lugar de invocar la funcion con arrow function
+        // Por temas de eficiencia
+        click={switchNameHandler.bind(this, personsState.persons[0].name)}
       >
         My Hobbies: Baseball
       </Person>
       <Person
         name={personsState.persons[1].name}
         age={personsState.persons[1].age}
+        click={switchNameHandler.bind(this, personsState.persons[1].name)}
+        changed={nameChangedHandler}
       />
       <Person
         name={personsState.persons[2].name}
         age={personsState.persons[2].age}
+        click={switchNameHandler.bind(this, personsState.persons[2].name)}
       />
     </div>
   );
