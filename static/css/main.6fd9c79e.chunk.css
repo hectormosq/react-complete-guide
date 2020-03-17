@@ -1,0 +1,123 @@
+.App_App__3p76Q {
+  text-align: center;
+}
+
+.App_Red__16Ebr {
+  color: red;
+}
+
+.App_Bold__3OE2Z {
+  font-weight: bold;
+}
+
+.App_App__3p76Q button {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid bluen;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.App_App__3p76Q button:hover {
+  background-color: lightgreen;
+  color: black;
+}
+
+.App_App__3p76Q button.App_Red__16Ebr {
+  background-color: red;
+}
+
+.App_App__3p76Q button.App_Red__16Ebr:hover {
+  background-color: salmon;
+}
+.Person_Person__1c_Yb {
+  width: 60%;
+  margin: 10px auto;
+  border: 1px solid #eee;
+  padding: 16px;
+  text-align: center;
+}
+
+@media (min-width: 500px) {
+  .Person_Person__1c_Yb {
+    width: 450px;
+  }
+}
+
+.App {
+  text-align: center;
+}
+
+.red {
+  color: red;
+}
+
+.bold {
+  font-weight: bold;
+}
+.Person {
+  width: 60%;
+  margin: 10px auto;
+  border: 1px solid #eee;
+  padding: 16px;
+  text-align: center;
+}
+
+.App_App__2SczT {
+  text-align: center;
+}
+
+.App_Red__5RDAb {
+  color: red;
+}
+
+.App_Bold__3TaR- {
+  font-weight: bold;
+}
+.Cockpit_Red__3PyN9 {
+  color: red;
+}
+
+.Cockpit_bold__QnYE7 {
+  font-weight: bold;
+}
+
+.Cockpit_Cockpit__3Re1p button {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 1px solid bluen;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.Cockpit_Cockpit__3Re1p button:hover {
+  background-color: lightgreen;
+  color: black;
+}
+
+.Cockpit_Cockpit__3Re1p button.Cockpit_Red__3PyN9 {
+  background-color: red;
+}
+
+.Cockpit_Cockpit__3Re1p button.Cockpit_Red__3PyN9:hover {
+  background-color: salmon;
+}
+
+.Person_Person__35RYG {
+  width: 60%;
+  margin: 10px auto;
+  border: 1px solid #eee;
+  padding: 16px;
+  text-align: center;
+}
+
+@media (min-width: 500px) {
+  .Person_Person__35RYG {
+    width: 450px;
+  }
+}
+
+
+/*# sourceMappingURL=main.6fd9c79e.chunk.css.map*/

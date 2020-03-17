@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-complete-guide/static/css/main.6fd9c79e.chunk.css",
+    "main.js": "/react-complete-guide/main.a4729fdb3911181a083a.bundle.js",
+    "main.css.map": "/react-complete-guide/static/css/main.6fd9c79e.chunk.css.map",
+    "main.js.map": "/react-complete-guide/main.a4729fdb3911181a083a.bundle.js.map",
+    "runtime~main.js": "/react-complete-guide/runtime~main.a4729fdb3911181a083a.bundle.js",
+    "runtime~main.js.map": "/react-complete-guide/runtime~main.a4729fdb3911181a083a.bundle.js.map",
+    "vendors~main.js": "/react-complete-guide/vendors~main.a4729fdb3911181a083a.bundle.js",
+    "vendors~main.js.map": "/react-complete-guide/vendors~main.a4729fdb3911181a083a.bundle.js.map",
+    "iframe.html": "/react-complete-guide/iframe.html",
+    "precache-manifest.abe413e6dbcd81b60a2ff6d3de0997f9.js": "/react-complete-guide/precache-manifest.abe413e6dbcd81b60a2ff6d3de0997f9.js",
+    "service-worker.js": "/react-complete-guide/service-worker.js",
+    "vendors~main.a4729fdb3911181a083a.bundle.js.LICENSE.txt": "/react-complete-guide/vendors~main.a4729fdb3911181a083a.bundle.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "runtime~main.a4729fdb3911181a083a.bundle.js",
+    "vendors~main.a4729fdb3911181a083a.bundle.js",
+    "static/css/main.6fd9c79e.chunk.css",
+    "main.a4729fdb3911181a083a.bundle.js"
+  ]
+}
