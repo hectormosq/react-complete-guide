@@ -2,7 +2,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable max-len */
 import React, { useState } from "react";
-import "./App.css";
+import style from "./App.module.css";
 import Person from "./Person/Person";
 
 const App = props => {
@@ -36,15 +36,8 @@ const App = props => {
     setShowPersons(!showPersons);
   };
 
-  const style = {
-    backgroundColor: "white",
-    font: "inherit",
-    border: "1px solid blue",
-    padding: "8px",
-    cursor: "pointer"
-  };
-
   let persons = null;
+  let btnClass = '';
   if (showPersons) {
     persons = (
       <div>
@@ -63,11 +56,27 @@ const App = props => {
     );
   }
 
+  let classes = [];
+  if (personsState.length <= 2) {
+    classes.push(style.Red);
+  }
+  if (personsState.length <= 1) {
+    classes.push(style.Bold);
+  }
+  if (showPersons) {
+    btnClass = style.Red
+  }
+
   return (
-    <div className="App">
+    <div className={style.App}>
       <h1>Hi, I'm a React App</h1>
-      <p>This is really working with OtherState: {otherState}</p>
-      <button style={style} onClick={togglePersonsHandler.bind(this)}>
+      <p className={classes.join(" ")}>
+        This is really working with OtherState: {otherState}
+      </p>
+      <button
+        className={btnClass}
+        onClick={togglePersonsHandler.bind(this)}
+      >
         Toggle Persons
       </button>
       {persons}
