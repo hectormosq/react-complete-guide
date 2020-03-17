@@ -6,35 +6,34 @@ import "./App.css";
 import Person from "./Person/Person";
 
 const App = props => {
-  const [personsState, setPersonsState] = useState({
-    persons: [
-      { name: "Hector", age: "29" },
-      { name: "Manu", age: "27" },
-      { name: "Amy", age: "26" }
-    ],
-    otherState: "Other State"
-  });
-
+  const [personsState, setPersonsState] = useState([
+    { id: "1", name: "Hector", age: "29" },
+    { id: "2", name: "Manu", age: "27" },
+    { id: "3", name: "Amy", age: "26" }
+  ]);
   const [otherState] = useState("Otro Estado");
+  const [showPersons, setShowPersons] = useState(false);
 
-  const switchNameHandler = newName => {
-    setPersonsState({
-      persons: [
-        { name: newName, age: "29" },
-        { name: "Manu", age: "27" },
-        { name: "Amy", age: "26" }
-      ]
+  const nameChangedHandler = (event, id) => {
+    const persons = [...personsState];
+    const personIndex = persons.findIndex(item => {
+      return item.id === id;
     });
+
+    if (personIndex > -1) {
+      persons[personIndex].name = event.target.value;
+      setPersonsState(persons);
+    }
   };
 
-  const nameChangedHandler = event => {
-    setPersonsState({
-      persons: [
-        { name: "Hector Joel", age: "29" },
-        { name: event.target.value, age: "27" },
-        { name: "Amy", age: "26" }
-      ]
-    });
+  const deletePersonHandler = personIndex => {
+    const persons = [...personsState];
+    persons.splice(personIndex, 1);
+    setPersonsState(persons);
+  };
+
+  const togglePersonsHandler = () => {
+    setShowPersons(!showPersons);
   };
 
   const style = {
@@ -42,39 +41,36 @@ const App = props => {
     font: "inherit",
     border: "1px solid blue",
     padding: "8px",
-    cursor: 'pointer'
+    cursor: "pointer"
   };
+
+  let persons = null;
+  if (showPersons) {
+    persons = (
+      <div>
+        {personsState.map((person, index) => {
+          return (
+            <Person
+              key={person.id}
+              name={person.name}
+              age={person.age}
+              click={() => deletePersonHandler(index)}
+              changed={event => nameChangedHandler(event, person.id)}
+            />
+          );
+        })}
+      </div>
+    );
+  }
 
   return (
     <div className="App">
       <h1>Hi, I'm a React App</h1>
       <p>This is really working with OtherState: {otherState}</p>
-      <button
-        style={style}
-        onClick={() => switchNameHandler("Con Arrow Function")}
-      >
-        Switch Name
+      <button style={style} onClick={togglePersonsHandler.bind(this)}>
+        Toggle Persons
       </button>
-      <Person
-        name={personsState.persons[0].name}
-        age={personsState.persons[0].age}
-        // TODO [Comprobar] - Es preferible usar .bind en lugar de invocar la funcion con arrow function
-        // Por temas de eficiencia
-        click={switchNameHandler.bind(this, personsState.persons[0].name)}
-      >
-        My Hobbies: Baseball
-      </Person>
-      <Person
-        name={personsState.persons[1].name}
-        age={personsState.persons[1].age}
-        click={switchNameHandler.bind(this, personsState.persons[1].name)}
-        changed={nameChangedHandler}
-      />
-      <Person
-        name={personsState.persons[2].name}
-        age={personsState.persons[2].age}
-        click={switchNameHandler.bind(this, personsState.persons[2].name)}
-      />
+      {persons}
     </div>
   );
 
